@@ -1,0 +1,463 @@
+:root {
+    /* Colors */
+    --primaryColor: rgb(3, 3, 3);
+    --navColor1: #E7E4DF;
+    --navColor2: #B6B2AD;
+    --navColor3: #615D58;
+    --navColor4: #56565a;
+    --navColor5: #272421;
+    --OpacityColor1: rgba(182, 178, 173, .8);
+    --OpacityColor2: rgba(97, 93, 88, .8);
+    --OpacityColor3: rgba(86, 86, 90, .8);
+    --OpacityColor4: rgba(39, 36, 33, .8);
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    background-color: #f7f7f7;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.11'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* --- Navigation Menu ------------------------------ */
+
+
+/* Overlay */
+
+.overlay {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* nem biztos hogy szukseges */
+    background-color: rgba(0, 0, 0, .4);
+    transform: translateX(-100vw);
+}
+
+.overlay-slide-right {
+    transition: all .4s ease-in-out;
+    transform: translateX(0);
+}
+
+.overlay-slide-left {
+    transition: all .8s ease-in-out;
+    transform: translateX(-100vw);
+}
+
+
+/* Navigation Menu */
+
+nav,
+nav ul {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    list-style: none;
+}
+
+nav ul li {
+    height: 20%;
+    overflow: hidden;
+}
+
+nav li a {
+    position: relative;
+    top: 45%;
+    color: var(--primaryColor);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+nav li a:hover {
+    transform: scale(1.2);
+}
+
+nav li a::before {
+    content: "";
+    width: 25vw;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 47.5%;
+    left: 0;
+    opacity: 0;
+}
+
+nav li a:hover::before {
+    opacity: 1;
+}
+
+nav li:nth-of-type(1) {
+    background-color: var(--navColor1);
+}
+
+nav li:nth-of-type(2) {
+    background-color: var(--navColor2);
+}
+
+nav li:nth-of-type(3) {
+    background-color: var(--navColor3);
+}
+
+nav li:nth-of-type(4) {
+    background-color: var(--navColor4);
+}
+
+nav li:nth-of-type(5) {
+    background-color: var(--navColor5);
+}
+
+
+/* Slide in animation delay for each nav item */
+
+.slide-in-1 {
+    animation: slide-in .4s linear .2s both;
+}
+
+.slide-in-2 {
+    animation: slide-in .4s linear .4s both;
+}
+
+.slide-in-3 {
+    animation: slide-in .4s linear .6s both;
+}
+
+.slide-in-4 {
+    animation: slide-in .4s linear .8s both;
+}
+
+.slide-in-5 {
+    animation: slide-in .4s linear 1s both;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+/* Slide out animation delay for each nav item */
+
+.slide-out-1 {
+    animation: slide-out .3s linear .5s both;
+}
+
+.slide-out-2 {
+    animation: slide-out .3s linear .4s both;
+}
+
+.slide-out-3 {
+    animation: slide-out .3s linear .3s both;
+}
+
+.slide-out-4 {
+    animation: slide-out .3s linear .2s both;
+}
+
+.slide-out-5 {
+    animation: slide-out .3s linear .1s both;
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* --- Logo ------------------------------------ */
+
+#logo a {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 1.5rem;
+    left: 1.5rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding-bottom: 5px;
+    color: var(--primaryColor);
+    border-bottom: 1px solid var(--primaryColor);
+}
+
+
+/* --- Menu Bars ------------------------------------ */
+
+.menu-bars {
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+    z-index: 10;
+    display: inline;
+    cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 35px;
+    height: 2px;
+    background-color: var(--primaryColor);
+    margin: 8px 0;
+    transition: 0.4s;
+}
+
+
+/* Rotate first bar */
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-7px, 8px);
+}
+
+
+/* Fade out the second bar */
+
+.change .bar2 {
+    opacity: 0;
+}
+
+
+/* Rotate last bar */
+
+.change .bar3 {
+    transform: rotate(45deg) translate(-6px, -8px);
+}
+
+
+/* --- Sections ------------------------------------ */
+
+section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primaryColor);
+}
+
+
+/* Section Home */
+
+.home-wrapper {
+    display: block;
+}
+
+.home-wrapper h1 {
+    font-size: 40px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.languages ul {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 50px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.languages a {
+    color: rgb(3, 3, 3);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.languages li {
+    display: inline-block;
+}
+
+.languages li::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primaryColor);
+    transition: width .3s;
+}
+
+.languages li:hover::after {
+    width: 100%;
+}
+
+.social-media {
+    color: var(--primaryColor);
+    font-size: 3rem;
+}
+
+.social-media ul {
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social-media ul li i {
+    color: var(--primaryColor);
+}
+
+
+/* About */
+
+#about {
+    background-color: var(--OpacityColor1);
+}
+
+.about-container {
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    padding-bottom: 50px;
+}
+
+.about-header {
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    width: 275px;
+    margin: 20px auto 10px;
+    user-select: none;
+}
+
+.about-description {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .4);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.about-description img {
+    margin: 10px;
+}
+
+.about-description>p {
+    font-style: italic;
+    margin: 10px;
+    text-align: center;
+    width: fit-content;
+}
+
+
+/* Skills & CV */
+
+section#skills {
+    color: rgb(12, 12, 12);
+    background-color: var(--OpacityColor2);
+}
+
+.skills-cv {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    padding-bottom: 50px;
+}
+
+.cv-lang {
+    padding: 35px;
+    font-weight: 400;
+    text-align: center;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .4);
+    border-radius: 10%;
+}
+
+.fa-arrow-circle-down {
+    font-size: 3rem;
+    color: rgb(250, 227, 192);
+}
+
+.fa-arrow-circle-down:hover {
+    filter: brightness(120%);
+}
+
+
+/* Projects */
+
+section#projects {
+    background-color: var( --OpacityColor3);
+}
+
+
+/* Contact */
+
+section#contact {
+    background-color: var(--OpacityColor4);
+}
+
+
+/* Media Query: Large Smartphone (Vertical) */
+
+@media (max-width: 600px) {
+    section#home a {
+        top: 1rem;
+        left: 1rem;
+    }
+    .menu-bars {
+        top: 0.5rem;
+        right: 1rem;
+    }
+    .home-wrapper h1 {
+        font-size: large;
+    }
+    /* About */
+    .about-container {
+        min-width: unset;
+        width: 95vw;
+        min-height: 245px;
+        padding: 20px;
+        margin: 10px;
+    }
+    .about-description {
+        flex-direction: column;
+    }
+    .about-description img {
+        width: 150px;
+    }
+    /* Skills & CV */
+    .skills-cv {
+        flex-direction: column;
+    }
+    .cv-lang {
+        padding: 50px;
+        font-weight: 200;
+        box-shadow: none;
+        border-radius: none;
+    }
+}
